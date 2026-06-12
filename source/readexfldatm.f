@@ -89,20 +89,20 @@ c
 c
 c        convert external field from V/nm to atomic units
 c
-         exfld_atm(1,iatm) = exfld_atm(1,iatm) * 10 / elefield
-         exfld_atm(2,iatm) = exfld_atm(2,iatm) * 10 / elefield
-         exfld_atm(3,iatm) = exfld_atm(3,iatm) * 10 / elefield
+         exfld_atm(1,iatm) = exfld_atm(1,iatm) / (10 * elefield)  
+         exfld_atm(2,iatm) = exfld_atm(2,iatm) / (10 * elefield)
+         exfld_atm(3,iatm) = exfld_atm(3,iatm) / (10 * elefield)
 
 c
 c        convert external field gradients from V/nm^2 to atomic units
 c
 
-         exfld_atm(4,iatm) = exfld_atm(4,iatm) * 100 / elefield
-         exfld_atm(5,iatm) = exfld_atm(5,iatm) * 100 / elefield
-         exfld_atm(6,iatm) = exfld_atm(6,iatm) * 100 / elefield
-         exfld_atm(7,iatm) = exfld_atm(7,iatm) * 100 / elefield
-         exfld_atm(8,iatm) = exfld_atm(8,iatm) * 100 / elefield
-         exfld_atm(9,iatm) = exfld_atm(9,iatm) * 100 / elefield
+         exfld_atm(4,iatm) = exfld_atm(4,iatm) / (100 * elefield)  
+         exfld_atm(5,iatm) = exfld_atm(5,iatm) / (100 * elefield)
+         exfld_atm(6,iatm) = exfld_atm(6,iatm) / (100 * elefield)
+         exfld_atm(7,iatm) = exfld_atm(7,iatm) / (100 * elefield)
+         exfld_atm(8,iatm) = exfld_atm(8,iatm) / (100 * elefield)
+         exfld_atm(9,iatm) = exfld_atm(9,iatm) / (100 * elefield)
    30    continue
       end do
    40 continue
@@ -116,9 +116,9 @@ c
       write (iout,50)
    50 format (/,' External Field Summary for All Atoms:',/)
       do i = 1, n
-         fx = exfld_atm(1,i) * elefield / 10
-         fy = exfld_atm(2,i) * elefield / 10
-         fz = exfld_atm(3,i) * elefield / 10
+         fx = exfld_atm(1,i) * (10 * elefield)   
+         fy = exfld_atm(2,i) * (10 * elefield)
+         fz = exfld_atm(3,i) * (10 * elefield)
          write (iout,60)  i, fx, fy, fz,
      &                    exfld_atm(1,i),
      &                    exfld_atm(2,i),
@@ -135,12 +135,12 @@ c
    70 format (/,' External Field Gradients Summary for All Atoms:',/)
 
       do i = 1, n
-         fxx = exfld_atm(4,i) *  elefield / 100
-         fxy = exfld_atm(5,i) *  elefield / 100
-         fxz = exfld_atm(6,i) *  elefield / 100
-         fyy = exfld_atm(7,i) *  elefield / 100
-         fyz = exfld_atm(8,i) *  elefield / 100
-         fzz = exfld_atm(9,i) *  elefield / 100
+         fxx = exfld_atm(4,i) * (100 * elefield) 
+         fxy = exfld_atm(5,i) * (100 * elefield) 
+         fxz = exfld_atm(6,i) * (100 * elefield) 
+         fyy = exfld_atm(7,i) * (100 * elefield) 
+         fyz = exfld_atm(8,i) * (100 * elefield) 
+         fzz = exfld_atm(9,i) * (100 * elefield) 
          write (iout,80)  i, fxx, fxy, fxz,
      &                    fyy, fyz, fzz,
      &                    exfld_atm(4,i),
